@@ -3,10 +3,12 @@ import { RentalService } from './rental.service';
 import { RentalController } from './rental.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Rental } from './rental.entity';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Rental])
+    TypeOrmModule.forFeature([Rental]),
+    UserModule,
   ],
   providers: [RentalService],
   controllers: [RentalController]

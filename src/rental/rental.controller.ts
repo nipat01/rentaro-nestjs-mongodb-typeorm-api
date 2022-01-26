@@ -1,4 +1,5 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Rental } from './rental.entity';
 import { RentalService } from './rental.service';
 
 @Controller('rental')
@@ -7,28 +8,46 @@ export class RentalController {
         private rentalService: RentalService
     ) { }
 
-    async createRental() {
-
+    @Get()
+    async getAllRental() {
+        return await this.rentalService.getAllRentalService();
     }
 
-    async getRentalById() {
-
+    @Post()
+    async createRental(@Body() input: Rental) {
+        return await this.rentalService.createRentalService(input);
     }
 
-    async deleteRentalById() {
-        
+    @Get(":id")
+    async getRentalById(@Param() param: any) {
+        return await this.rentalService.getRentalByIdService(param.id);
     }
 
-    async getRentalByRenterId() {
-
+    @Delete(":id")
+    async deleteRentalById(@Param() param: any) {
+        return await this.rentalService.deleteRentalByIdService(param.id);
     }
 
-    async getRentalByOwnerId() {
+    @Get("carid/:carid")
+    async getRentalByCarId(@Param() param: any) {
+        console.log("param =>", param);
 
+        return await this.rentalService.getRentalByCarIdService(param.carid);
     }
 
-    async editRental() {
+    @Get("renterid/:email")
+    async getRentalByRenterId(@Param() param: any) {
+        return await this.rentalService.getRentalByRenterIdService(param.email);
+    }
 
+    @Get("ownerid/:email")
+    async getRentalByOwnerId(@Param() param: any) {
+        return await this.rentalService.getRentalByOwnerIdService(param.email);
+    }
+
+    @Put()
+    async editRental(@Body() input: Rental) {
+        return await this.rentalService.editRentalService(input);
     }
 
 

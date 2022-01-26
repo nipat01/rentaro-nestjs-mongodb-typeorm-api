@@ -1,10 +1,10 @@
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
 
-@Entity({name: "rentaro_car"})
+@Entity({ name: "rentaro_car" })
 export class Car {
 
     @ObjectIdColumn()
-    _id: string
+    _id: ObjectID
 
     @Column()
     owner_id: string
@@ -40,4 +40,35 @@ export class Car {
     @Column()
     cost: string
 
+    @Column()
+    address: string;
+
+    @Column()
+    province: string;
+
+    @Column()
+    district: string;
+
+    @Column()
+    sub_district: string;
+
+    @Column()
+    postal_code: string;
+
+
 }
+
+// {
+//     "owner_id": "nipat.pueksasuwan@gmail.com",
+//     "created": "26-01-2022",
+//     "license_plate": "",
+//     "car_type": "",
+//     "model": "",
+//     "production_year": "",
+//     "status": "",
+//     "image": "",
+//     "cost": "",
+//     "province": "",
+//     "district": "",
+//     "sub_district"
+// }

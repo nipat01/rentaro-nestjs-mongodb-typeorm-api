@@ -27,6 +27,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/typeorm": "^8.0.3",
     "@types/mongodb": "^4.0.7",
+    "moment": "^2.29.1",
     "mongodb": "^3.7.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

@@ -1,10 +1,10 @@
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
 
-@Entity({name: "rentaro_rental"})
+@Entity({ name: "rentaro_rental" })
 export class Rental {
 
     @ObjectIdColumn()
-    _id: string
+    _id: ObjectID
 
     @Column()
     created: string
@@ -31,27 +31,15 @@ export class Rental {
     owner: string
 
     @Column()
-    address: string;
-
-    @Column()
-    province: string;
-
-    @Column()
-    district: string;
-
-    @Column()
-    sub_district: string;
-
-    @Column()
-    postal_code: string;
-
-    @Column()
     start_date: Date;
     // start_date: string;
 
     @Column()
     end_date: Date;
     // end_date: string;
+
+    @Column()
+    cost: string;
 
     @Column()
     pickup_time: string;
