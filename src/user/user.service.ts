@@ -13,9 +13,9 @@ export class UserService {
 
     async createOrUpdateProfile(input: User) {
         const result = await this.userRepository.findOne({ email: input.email });
-        input._id = result._id
         // console.log("result", result);
         if (result) {
+            input._id = result._id
             return await this.userRepository.save({
                 ...result,
                 ...input

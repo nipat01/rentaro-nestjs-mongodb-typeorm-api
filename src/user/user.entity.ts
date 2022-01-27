@@ -1,10 +1,10 @@
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { Column, Entity, ObjectIdColumn, ObjectID } from "typeorm";
 
 @Entity({ name: "rentaro_user" })
 export class User {
 
     @ObjectIdColumn()
-    _id: string;
+    _id: ObjectID;
 
     @Column()
     name: string;
