@@ -39,8 +39,13 @@ export class CarService {
     }
 
     async createCarService(input: Car) {
+        var moment = require('moment'); // require
+        // moment().format();
+        console.log("moment().format('DD-MMM-YYYY'); =>", moment().format('DD-MM-YYYY'));
+
         console.log("createCarService input", input);
         input.status = "Active";
+        input.created = moment().format('DD-MM-YYYY');
         return await this.carRepositoty.save(input)
     }
 
