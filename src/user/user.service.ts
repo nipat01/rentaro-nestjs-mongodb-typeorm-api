@@ -13,8 +13,8 @@ export class UserService {
 
     async createOrUpdateProfile(input: User) {
         const result = await this.userRepository.findOne({ email: input.email });
-        // console.log("result", result);
-        if (result) {
+        console.log("result", result);
+        if (result) { 
             input._id = result._id
             return await this.userRepository.save({
                 ...result,
