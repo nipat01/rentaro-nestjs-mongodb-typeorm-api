@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CarService } from 'src/car/car.service';
 import { UserService } from 'src/user/user.service';
 import { MongoRepository } from 'typeorm';
 import { Rental } from './rental.entity';
@@ -10,7 +11,8 @@ export class RentalService {
     constructor(
         @InjectRepository(Rental)
         private rentalRepository: MongoRepository<Rental>,
-        private userService: UserService
+        private userService: UserService,
+        private carService: CarService
     ) { }
 
     async getAllRentalService() {
@@ -49,6 +51,7 @@ export class RentalService {
         console.log("carId =>", carId);
 
         const response = await this.rentalRepository.find({ car_id: carId });
+
         console.log("response =>", response);
         return response
 
@@ -61,7 +64,8 @@ export class RentalService {
             rentalResponse.map(async item => {
                 return {
                     ...item,
-                    owner: await this.userService.getUserByEmail(item.owner_id)
+                    owner: await this.userService.getUserByEmail(item.owner_id),
+                    car: await this.carService.getCarByIdService(item.car_id)
                 }
             })
         )
@@ -78,7 +82,8 @@ export class RentalService {
             rentalResponse.map(async item => {
                 return {
                     ...item,
-                    renter: await this.userService.getUserByEmail(item.renter_id)
+                    renter: await this.userService.getUserByEmail(item.renter_id),
+                    car: await this.carService.getCarByIdService(item.car_id)
                 }
             })
         )

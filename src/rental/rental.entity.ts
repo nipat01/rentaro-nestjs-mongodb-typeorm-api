@@ -19,6 +19,9 @@ export class Rental {
     car_id: string
 
     @Column()
+    car: string
+
+    @Column()
     renter_id: string
 
     @Column()

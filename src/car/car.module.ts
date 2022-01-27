@@ -11,6 +11,9 @@ import { UserModule } from 'src/user/user.module';
     UserModule
   ],
   providers: [CarService],
-  controllers: [CarController]
+  controllers: [CarController],
+  exports: [
+    CarService
+  ]
 })
 export class CarModule { }
